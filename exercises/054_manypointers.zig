@@ -21,7 +21,7 @@ pub fn main() void {
     //         const zen12: []const u8 = "...";
     //
     // Now let's turn this into a "many-item pointer":
-    const zen_manyptr: [*]const u8 = zen12;
+    const zen_manyptr: []const u8 = zen12;
 
     // It's okay to access zen_manyptr just like an array or slice as
     // long as you keep track of the length yourself!
