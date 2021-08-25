@@ -64,6 +64,14 @@ const std = @import("std");
 
 const Err = error{Cthulhu};
 
+const Printable = struct {
+    
+    fn print(self: Printable) void {
+        _ = self;
+        std.debug.print("hello\n", .{});
+    }
+};
+
 pub fn main() void {
     var first_line1: *const [16]u8 = undefined;
     first_line1 = "That is not dead";
@@ -73,8 +81,15 @@ pub fn main() void {
 
     std.debug.print("{s} {s} / ", .{ first_line1, first_line2 });
 
-    printSecondLine();
+    var p: ?Printable = null;
+    p.?.print();
+    p = Printable{};
+    p.?.print();
+    if(p) |p0| {
+        p0.print();
+    }
 }
+
 
 fn printSecondLine() void {
     var second_line2: ?*const [18]u8 = null;
